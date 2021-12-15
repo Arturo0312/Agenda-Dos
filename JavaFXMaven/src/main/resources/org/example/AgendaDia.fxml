@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" stylesheets="@AgendaDiaStyle.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.AgendaDia">
+   <children>
+      <Label layoutX="127.0" layoutY="14.0" prefHeight="31.0" prefWidth="360.0" text="Fecha" />
+      <TableView fx:id="tbldia" layoutX="39.0" layoutY="62.0" prefHeight="288.0" prefWidth="523.0">
+        <columns>
+          <TableColumn prefWidth="75.0" text="Hora" />
+          <TableColumn prefWidth="129.0" text="Estatus" />
+        </columns>
+      </TableView>
+      <Button fx:id="btnbackCal" layoutX="534.0" layoutY="361.0" mnemonicParsing="false" onAction="#atras" text="Atras" />
+      <Button fx:id="btnHomeAgendar" layoutX="13.0" layoutY="17.0" mnemonicParsing="false" onAction="#GoHome" text="..." />
+   </children>
+</AnchorPane>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane cache="true" prefHeight="366.0" prefWidth="387.0" stylesheets="@RegistrarPacienteStyle.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.RegistrarPaciente">
+    <children>
+        <Label layoutX="125.0" layoutY="15.0" text="Registrar Paciente" />
+        <Label layoutX="33.0" layoutY="68.0" text="Nombre:" />
+        <Label layoutX="33.0" layoutY="101.0" text="Apellidos:" />
+        <Label layoutX="29.0" layoutY="134.0" prefHeight="17.0" prefWidth="135.0" text="Correo Electronico:" />
+        <Label layoutX="29.0" layoutY="164.0" text="Tipo de Sangre:" />
+        <Label layoutX="34.0" layoutY="262.0" text="Alergias:" />
+        <Label layoutX="32.0" layoutY="194.0" text="Telefono:" />
+        <Label layoutX="33.0" layoutY="232.0" text="Sexo" />
+        <Button fx:id="btnal" layoutX="29.0" layoutY="327.0" mnemonicParsing="false" onAction="#Registrar" text="Registrar Paciente" />
+        <TextField fx:id="txtnom" layoutX="169.0" layoutY="64.0" />
+        <TextField fx:id="txtap" layoutX="169.0" layoutY="97.0" prefHeight="25.0" prefWidth="158.0" />
+        <TextField fx:id="txtcorr" layoutX="170.0" layoutY="130.0" prefHeight="25.0" prefWidth="158.0" />
+        <TextField fx:id="txttip" layoutX="169.0" layoutY="160.0" prefHeight="25.0" prefWidth="158.0" />
+        <TextArea fx:id="txfal" layoutX="169.0" layoutY="247.0" prefHeight="64.0" prefWidth="158.0" />
+        <TextField fx:id="txtnum" layoutX="169.0" layoutY="190.0" prefHeight="25.0" prefWidth="158.0" />
+        <ComboBox fx:id="cmbsex" layoutX="169.0" layoutY="220.0" prefHeight="25.0" prefWidth="158.0" />
+      <Button layoutX="254.0" layoutY="327.0" mnemonicParsing="false" onAction="#atras" text="Atras" />
+    </children>
+</AnchorPane>

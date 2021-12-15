@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane prefHeight="554.0" prefWidth="915.0" stylesheets="@ExpedientePacientesStyle.css" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.ExpedientePacientes">
+   <children>
+      <TableView fx:id="tblpacientes" layoutX="42.0" layoutY="127.0" prefHeight="376.0" prefWidth="834.0">
+        <columns>
+          <TableColumn fx:id="colNombre" prefWidth="75.0" text="Nombre" />
+          <TableColumn fx:id="colApellido" prefWidth="75.0" text="Apellido" />
+            <TableColumn fx:id="colCorreo" prefWidth="75.0" text="Correo" />
+            <TableColumn fx:id="colTipo" prefWidth="75.0" text="Tipo" />
+            <TableColumn fx:id="colAlergias" prefWidth="75.0" text="Alergias" />
+            <TableColumn fx:id="colTelefono" prefWidth="75.0" text="Telefono" />
+            <TableColumn fx:id="colSexo" prefWidth="75.0" text="Sexo" />
+        </columns>
+      </TableView>
+      <TextField fx:id="buscador" layoutX="42.0" layoutY="72.0" prefHeight="33.0" prefWidth="733.0" />
+      <Button fx:id="btnfind" layoutX="782.0" layoutY="72.0" mnemonicParsing="false" prefHeight="33.0" prefWidth="94.0" text="BUSCAR" />
+      <Label layoutX="286.0" layoutY="26.0" text="Pacientes Registrados" />
+      <Button fx:id="btnbackexp" layoutX="788.0" layoutY="514.0" mnemonicParsing="false" onAction="#back" prefHeight="25.0" prefWidth="94.0" text="Atras" />
+   </children>
+</AnchorPane>
