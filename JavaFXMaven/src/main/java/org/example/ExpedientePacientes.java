@@ -83,7 +83,8 @@ public class ExpedientePacientes {
     public void initialize() throws SQLException {
         this.LimpiarT();
         this.ExpedienteT();
-        String path = ((URL) Objects.requireNonNull(CitasHoy.class.getResource("Pacientes.db"))).toString();
+        String homeUsuario = System.getProperty("user.home");
+        String path = homeUsuario+"\\Consultorio\\Pacientes.db";
         String url = "jdbc:sqlite:" + path;
         Connection connection = DriverManager.getConnection(url);
 
