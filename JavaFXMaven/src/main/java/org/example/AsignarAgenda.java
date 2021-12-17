@@ -38,7 +38,8 @@ public class AsignarAgenda {
     }
 
     public void initialize() throws SQLException {
-        String path = AsignarAgenda.class.getResource("Pacientes.db").toString();
+        String homeUsuario = System.getProperty("user.home");
+        String path = homeUsuario+"\\Consultorio\\Pacientes.db";
         String url = "jdbc:sqlite:" + path;
         System.out.println(path);
         ObservableList<String> Pacientes = FXCollections.observableArrayList();
@@ -64,12 +65,12 @@ public class AsignarAgenda {
         ObservableList<String> h = FXCollections.observableArrayList();
         h.addAll(new String[]{"11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30", "17:00", "17:30", "18:00"});
         this.cmbhor.setItems(h);
-        path = AsignarAgenda.class.getResource("Usuarios.db").toString();
+        path =  homeUsuario+"\\Consultorio\\Usuarios.db";
         url = "jdbc:sqlite:" + path;
+        System.out.println(path);
         ObservableList<String> Doctores = FXCollections.observableArrayList();
         connection = DriverManager.getConnection(url);
         st = connection.createStatement();
-
         try {
             rs = st.executeQuery("SELECT * from Users;");
 
@@ -97,7 +98,8 @@ public class AsignarAgenda {
         LocalDate hoy = LocalDate.now();
         String d = dia.toString();
         if (!dia.isBefore(hoy)) {
-            String path = AsignarAgenda.class.getResource("Citas.db").toString();
+            String homeUsuario = System.getProperty("user.home");
+            String path = homeUsuario+"\\Consultorio\\Citas.db";
             String url = "jdbc:sqlite:" + path;
             String sql = "Insert into Citas values('" + P + "','" + Pad + "','" + hora + "','" + Doc + "','" + d + "');";
             Connection connection = DriverManager.getConnection(url);

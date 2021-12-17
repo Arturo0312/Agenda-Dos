@@ -50,7 +50,8 @@ public class RegistrarPaciente {
         String tipo = this.txttip.getText();
         String sex = (String)this.cmbsex.getValue();
         String Alergia = this.txfal.getText();
-        String path = ((URL)Objects.requireNonNull(RegistrarPaciente.class.getResource("Pacientes.db"))).toString();
+        String homeUsuario = System.getProperty("user.home");
+        String path = homeUsuario+"\\Consultorio\\Pacientes.db";
         String url = "jdbc:sqlite:" + path;
         String sql = "Insert into Paciente values('" + Nombre + "','" + Apellido + "','" + Correo + "','" + tipo + "','" + Alergia + "','" + num + "','" + sex + "');";
         Connection connection = DriverManager.getConnection(url);

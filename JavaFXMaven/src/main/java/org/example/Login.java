@@ -40,7 +40,8 @@ public class Login {
     public void Login() throws SQLException {
         String usuario = this.txtus.getText();
         String pass = this.txtpass.getText();
-        String path = Objects.requireNonNull(Login.class.getResource("Usuarios.db")).toString();
+        String homeUsuario = System.getProperty("user.home");
+        String path = homeUsuario+"\\Consultorio\\Usuarios.db";
         String url = "jdbc:sqlite:" + path;
         Connection connection = DriverManager.getConnection(url);
         Statement st = connection.createStatement();
@@ -50,10 +51,8 @@ public class Login {
             String usV = rs.getString("Usuario");
             String pasV = rs.getString("Contra");
             if (usV.equals(usuario) && pasV.equals(pass)) {
-                String a= Login.class.getResource("UsuarioAct.txt").toString();
-                a=a.replace("file:/","");
-                System.out.println(a);
-                BufferedWriter bw = new BufferedWriter(new FileWriter(a));
+                File fichero = new File ( homeUsuario+"\\Consultorio\\UsuarioAct.txt");
+                BufferedWriter bw = new BufferedWriter(new FileWriter(fichero));
                 bw.write("");
                 bw.write(usV);
                 bw.close();

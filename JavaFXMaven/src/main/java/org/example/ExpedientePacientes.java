@@ -49,7 +49,8 @@ public class ExpedientePacientes {
         this.LimpiarT();
         this.ExpedienteT();
         String clave=this.buscador.getText();
-        String path = ((URL) Objects.requireNonNull(CitasHoy.class.getResource("Pacientes.db"))).toString();
+        String homeUsuario = System.getProperty("user.home");
+        String path = homeUsuario+"\\Consultorio\\Pacientes.db";
         String url = "jdbc:sqlite:" + path;
         Connection connection = DriverManager.getConnection(url);
         try {

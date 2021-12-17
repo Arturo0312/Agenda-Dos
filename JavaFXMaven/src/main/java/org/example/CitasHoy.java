@@ -60,22 +60,21 @@ public class CitasHoy {
     public void initialize() throws SQLException, FileNotFoundException {
         this.LimpiarT();
         this.CitasTabla();
-        String b= Login.class.getResource("UsuarioAct.txt").toString();
-        b=b.replace("file:/","");
+        String homeUsuario = System.getProperty("user.home");
+        String b= homeUsuario+"\\Consultorio\\UsuarioAct.txt";
         Scanner input = new Scanner(new File(b));
         while (input.hasNextLine()) {
             String line = input.nextLine();
             System.out.println(line);
+            this.doc=line;
         }
         input.close();
         this.lbldia.setText(String.valueOf(this.Hoy));
-        String path = ((URL)Objects.requireNonNull(CitasHoy.class.getResource("Citas.db"))).toString();
+        String path = homeUsuario+"\\Consultorio\\Citas.db";
         String url = "jdbc:sqlite:" + path;
         Connection connection = DriverManager.getConnection(url);
-
         try {
             Connection var7 = connection;
-
             try {
                 Statement st = connection.createStatement();
                 ResultSet rs = st.executeQuery("SELECT * from Citas WHERE Día='" + this.Hoy + "' and Doctor='" + this.doc + "' order by Hora;");
@@ -97,10 +96,8 @@ public class CitasHoy {
                         var13.addSuppressed(var12);
                     }
                 }
-
                 throw var13;
             }
-
             if (connection != null) {
                 connection.close();
             }
