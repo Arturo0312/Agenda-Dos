@@ -1,11 +1,17 @@
 package org.example;
 
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Objects;
+import java.util.Scanner;
+
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -34,7 +40,7 @@ public class Login {
     public void Login() throws SQLException {
         String usuario = this.txtus.getText();
         String pass = this.txtpass.getText();
-        String path = Login.class.getResource("Usuarios.db").toString();
+        String path = Objects.requireNonNull(Login.class.getResource("Usuarios.db")).toString();
         String url = "jdbc:sqlite:" + path;
         Connection connection = DriverManager.getConnection(url);
         Statement st = connection.createStatement();
@@ -44,6 +50,13 @@ public class Login {
             String usV = rs.getString("Usuario");
             String pasV = rs.getString("Contra");
             if (usV.equals(usuario) && pasV.equals(pass)) {
+                String a= Login.class.getResource("UsuarioAct.txt").toString();
+                a=a.replace("file:/","");
+                System.out.println(a);
+                BufferedWriter bw = new BufferedWriter(new FileWriter(a));
+                bw.write("");
+                bw.write(usV);
+                bw.close();
                 App.setRoot("CitasHoy");
             }
         } catch (SQLException var15) {

@@ -3,20 +3,20 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
-<AnchorPane fx:id="cmbpac" prefHeight="398.0" prefWidth="506.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.AsignarAgenda">
+<AnchorPane fx:id="cmbpac" prefHeight="398.0" prefWidth="477.0" stylesheets="@AsignarAgenda.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.AsignarAgenda">
     <children>
-        <Button fx:id="btnAg" layoutX="204.0" layoutY="314.0" mnemonicParsing="false" onAction="#Agendar" text="Agendar Cita" />
-        <Label layoutX="192.0" layoutY="28.0" text="Fecha del Día" />
+        <Button fx:id="btnAg" layoutX="38.0" layoutY="343.0" mnemonicParsing="false" onAction="#Agendar" text="Agendar Cita" />
+        <Label layoutX="184.0" layoutY="50.0" text="CITAS" />
         <Label layoutX="42.0" layoutY="112.0" text="Nombre del Paciente:" />
         <Label layoutX="42.0" layoutY="158.0" text="Doctor que lo atiende" />
         <Label layoutX="42.0" layoutY="199.0" text="Procedimiento:" />
         <Label layoutX="42.0" layoutY="235.0" text="Hora de la Cita" />
-        <ComboBox fx:id="cmbhor" layoutX="179.0" layoutY="231.0" prefHeight="25.0" prefWidth="75.0" promptText="11:00" visibleRowCount="20" />
-        <TextField fx:id="txtpad" layoutX="179.0" layoutY="195.0" />
-        <ComboBox fx:id="cmbPac" layoutX="178.0" layoutY="108.0" prefWidth="150.0" />
-        <DatePicker fx:id="dtCalendario" layoutX="176.0" layoutY="275.0" />
+        <ComboBox fx:id="cmbhor" layoutX="192.0" layoutY="231.0" prefHeight="25.0" prefWidth="90.0" visibleRowCount="20" />
+        <TextField fx:id="txtpad" layoutX="194.0" layoutY="195.0" />
+        <ComboBox fx:id="cmbPac" layoutX="194.0" layoutY="108.0" prefWidth="150.0" />
+        <DatePicker fx:id="dtCalendario" layoutX="190.0" layoutY="267.0" prefHeight="25.0" prefWidth="158.0" />
         <Label layoutX="42.0" layoutY="279.0" text="Día:" />
-        <ComboBox fx:id="cmbdoc" layoutX="178.0" layoutY="154.0" prefWidth="150.0" />
-      <Button layoutX="440.0" layoutY="359.0" mnemonicParsing="false" onAction="#atras" text="Atras" />
+        <ComboBox fx:id="cmbdoc" layoutX="194.0" layoutY="154.0" prefWidth="150.0" />
+      <Button layoutX="335.0" layoutY="343.0" mnemonicParsing="false" onAction="#atras" stylesheets="@AsignarAgenda.css" text="Atras" />
     </children>
 </AnchorPane>

@@ -19,36 +19,69 @@ import java.util.ResourceBundle;
 public class ExpedientePacientes {
 
 
+    private ObservableList<Paciente> P;
     @FXML
     private TableView<Paciente> tblpacientes;
+    @FXML
+    private TableColumn colNombre;
+    @FXML
+    private TableColumn colApellido;
+    @FXML
+    private TableColumn colTelefono;
+    @FXML
+    private TableColumn colCorreo;
+    @FXML
+    private TableColumn colTipo;
+    @FXML
+    private TableColumn colAlergias;
     @FXML
     private Button btnfind;
     @FXML
     private TextField buscador;
     @FXML
-    private TableColumn<Paciente, String>colNombre;
-    @FXML
-    private TableColumn<Paciente, String>colApellido;
-    @FXML
-    private TableColumn<Paciente, String>colCorreo;
-    @FXML
-    private TableColumn<Paciente, String>colTipo;
-    @FXML
-    private TableColumn<Paciente, String>colAlergias;
-    @FXML
-    private TableColumn<Paciente, String>colTelefono;
-    @FXML
-    private TableColumn<Paciente, String>colSexo;
-
-    private ObservableList Pacientes = FXCollections.observableArrayList(
-            new Paciente("dumy", "dummy", "dummy", "A", "dummy", 12345678, "bato")
-    );
+    private TableColumn colSexo;
+    @FXML private Button btninit;
 
 
 
 
+    public void Buscar() throws SQLException {
+        this.LimpiarT();
+        this.ExpedienteT();
+        String clave=this.buscador.getText();
+        String path = ((URL) Objects.requireNonNull(CitasHoy.class.getResource("Pacientes.db"))).toString();
+        String url = "jdbc:sqlite:" + path;
+        Connection connection = DriverManager.getConnection(url);
+        try {
+            Statement st = connection.createStatement();
+            ResultSet rs = st.executeQuery("SELECT * FROM Paciente where Nombre= '"+clave+"' or Apellido='"+clave+"';");
+            System.out.println(rs.toString());
+
+            while(rs.next()) {
+                String nom = rs.getString("Nombre");
+                String apll = rs.getString("Apellido");
+                String mail = rs.getString("Correo");
+                String tipo = rs.getString("TipoS");
+                String alg = rs.getString("Alergias");
+                String tel = rs.getString("Telefono");
+                String sex = rs.getString("Sexo");
+                Paciente a = new Paciente(nom, apll, mail,tipo,alg,tel,sex);
+                System.out.println(a);
+                this.P.add(a);
+                this.tblpacientes.setItems(this.P);
+            }
+        } catch (Throwable var13) {
+            if (connection != null) {
+                try {
+                } catch (Exception e) {
+                    System.out.println("No existe");
+                }
+            }
+        }
+    }
     public void initialize() throws SQLException {
-
+        this.LimpiarT();
+        this.ExpedienteT();
         String path = ((URL) Objects.requireNonNull(CitasHoy.class.getResource("Pacientes.db"))).toString();
         String url = "jdbc:sqlite:" + path;
         Connection connection = DriverManager.getConnection(url);
@@ -67,18 +100,13 @@ public class ExpedientePacientes {
                     String mail = rs.getString("Correo");
                     String tipo = rs.getString("TipoS");
                     String alg = rs.getString("Alergias");
-                    int tel = rs.getInt("Telefono");
+                    String tel = rs.getString("Telefono");
                     String sex = rs.getString("Sexo");
-
-                    Pacientes.add(new Paciente(nom, apll, mail, tipo, alg, tel, sex));
-
+                    Paciente a = new Paciente(nom, apll, mail,tipo,alg,tel,sex);
+                    System.out.println(a);
+                    this.P.add(a);
+                    this.tblpacientes.setItems(this.P);
                 }
-
-
-                this.tblpacientes.setItems(this.Pacientes);
-                System.out.println(Pacientes);
-
-
             } catch (Throwable var13) {
                 if (connection != null) {
                     try {
@@ -99,6 +127,24 @@ public class ExpedientePacientes {
         }
 
 
+    }
+
+    public void LimpiarT() {
+        this.ExpedienteT();
+        Paciente a = new Paciente("", "", "","","","","");
+        this.P.add(a);
+        this.tblpacientes.setItems(this.P);
+    }
+
+    public void ExpedienteT() {
+        this.P = FXCollections.observableArrayList();
+        this.colNombre.setCellValueFactory(new PropertyValueFactory("nom"));
+        this.colApellido.setCellValueFactory(new PropertyValueFactory("apll"));
+        this.colCorreo.setCellValueFactory(new PropertyValueFactory("mail"));
+        this.colTelefono.setCellValueFactory(new PropertyValueFactory("tel"));
+        this.colAlergias.setCellValueFactory(new PropertyValueFactory("alg"));
+        this.colTipo.setCellValueFactory(new PropertyValueFactory("tipo"));
+        this.colSexo.setCellValueFactory(new PropertyValueFactory("sex"));
     }
 
 

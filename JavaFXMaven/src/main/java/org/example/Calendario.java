@@ -1,9 +1,12 @@
 package org.example;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.Year;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -310,7 +313,157 @@ public class Calendario {
         App.setRoot("CitasHoy");
     }
 
-    public void PickDia(ActionEvent actionEvent) throws IOException {
+    public void PickDia1(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnd1.getText();
+        dia(fecha);
+    }
+    public void PickDia2(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnd2.getText();
+        dia(fecha);
+    }
+    public void PickDia3(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnd3.getText();
+        dia(fecha);
+    }
+    public void PickDia4(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnd4.getText();
+        dia(fecha);
+    }
+    public void PickDia5(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnd5.getText();
+        dia(fecha);
+    }
+    public void PickDia6(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnl1.getText();
+        dia(fecha);
+    }
+    public void PickDia7(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnl2.getText();
+        dia(fecha);
+    }
+    public void PickDia8(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnl3.getText();
+        dia(fecha);
+    }
+    public void PickDia9(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnl4.getText();
+        dia(fecha);
+    }
+    public void PickDia10(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnl5.getText();
+        dia(fecha);
+    }
+    public void PickDia11(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnm1.getText();
+        dia(fecha);
+    }
+    public void PickDia12(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnm2.getText();
+        dia(fecha);
+    }
+    public void PickDia13(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnm3.getText();
+        dia(fecha);
+    }
+    public void PickDia14(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnm4.getText();
+        dia(fecha);
+    }
+    public void PickDia15(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnm5.getText();
+        dia(fecha);
+    }
+    public void PickDia16(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnmi1.getText();
+        dia(fecha);
+    }
+    public void PickDia17(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnmi2.getText();
+        dia(fecha);
+    }
+    public void PickDia18(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnmi3.getText();
+        dia(fecha);
+    }
+    public void PickDia19(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnmi4.getText();
+        dia(fecha);
+    }
+    public void PickDia20(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnmi5.getText();
+        dia(fecha);
+    }
+    public void PickDia21(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnj1.getText();
+        dia(fecha);
+    }
+    public void PickDia22(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnj2.getText();
+        dia(fecha);
+    }
+    public void PickDia23(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnj3.getText();
+        dia(fecha);
+    }
+    public void PickDia24(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnj4.getText();
+        dia(fecha);
+    }
+    public void PickDia25(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnj5.getText();
+        dia(fecha);
+    }
+    public void PickDia26(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnv1.getText();
+        dia(fecha);
+    }
+    public void PickDia27(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnv2.getText();
+        dia(fecha);
+    }
+    public void PickDia28(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnv3.getText();
+        dia(fecha);
+    }
+    public void PickDia29(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnv4.getText();
+        dia(fecha);
+    }
+    public void PickDia30(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btnv5.getText();
+        dia(fecha);
+    }
+    public void PickDia31(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btns1.getText();
+        dia(fecha);
+    }
+    public void PickDia32(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btns2.getText();
+        dia(fecha);
+    }
+    public void PickDia33(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btns3.getText();
+        dia(fecha);
+    }
+    public void PickDia34(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btns4.getText();
+        dia(fecha);
+    }
+    public void PickDia35(ActionEvent actionEvent) throws IOException {
+        String fecha=this.btns5.getText();
+        dia(fecha);
+    }
+    public void dia(String fecha) throws IOException {
+        String año=lblmes.getText();
+        String[] y=año.split("-");
+        fecha=y[1]+"-"+y[0]+"-"+fecha;
+        String a= Calendario.class.getResource("CalendarioD.txt").toString();
+        a=a.replace("file:/","");
+        System.out.println(a);
+        BufferedWriter bw = new BufferedWriter(new FileWriter(a));
+        bw.write("");
+        bw.write(fecha);
+        bw.close();
         App.setRoot("AgendaDia");
     }
 }

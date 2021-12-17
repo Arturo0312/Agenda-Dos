@@ -1,5 +1,6 @@
 package org.example;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
@@ -84,6 +85,9 @@ public class AsignarAgenda {
 
     }
 
+    public void atras() throws IOException {
+        App.setRoot("CitasHoy");
+    }
     public void Agendar() throws SQLException {
         String P = (String)this.cmbPac.getValue();
         String Doc = (String)this.cmbdoc.getValue();

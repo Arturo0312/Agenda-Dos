@@ -10,19 +10,19 @@ public class Agendados {
         this.estatus = b;
     }
 
-    public String getHora() {
+    public String gethora() {
         return hora;
     }
 
-    public void setHora(String hora) {
+    public void sethora(String hora) {
         this.hora = hora;
     }
 
-    public String getEstatus() {
+    public String getestatus() {
         return estatus;
     }
 
-    public void setEstatus(String estatus) {
+    public void setestatus(String estatus) {
         this.estatus = estatus;
     }
 }

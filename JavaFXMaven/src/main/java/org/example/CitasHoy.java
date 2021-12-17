@@ -1,5 +1,7 @@
 package org.example;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
@@ -9,6 +11,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.time.LocalDate;
 import java.util.Objects;
+import java.util.Scanner;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -49,17 +53,21 @@ public class CitasHoy {
     private Button btnprev;
     private Node node;
     private String doc;
-    Stage sd2;
 
     public CitasHoy() {
     }
 
-    public void initialize(Stage ab) throws SQLException {
-        this.sd2 = ab;
+    public void initialize() throws SQLException, FileNotFoundException {
         this.LimpiarT();
         this.CitasTabla();
-        System.out.println(this.sd2.getUserData());
-        this.doc = this.sd2.getUserData().toString();
+        String b= Login.class.getResource("UsuarioAct.txt").toString();
+        b=b.replace("file:/","");
+        Scanner input = new Scanner(new File(b));
+        while (input.hasNextLine()) {
+            String line = input.nextLine();
+            System.out.println(line);
+        }
+        input.close();
         this.lbldia.setText(String.valueOf(this.Hoy));
         String path = ((URL)Objects.requireNonNull(CitasHoy.class.getResource("Citas.db"))).toString();
         String url = "jdbc:sqlite:" + path;
@@ -119,32 +127,23 @@ public class CitasHoy {
 
 
     public void Registrar() throws IOException {
-        /*FXMLLoader Com = new FXMLLoader(this.getClass().getResource("RegistrarPaciente.fxml"));
-        Parent root = (Parent)Com.load();
-        RegistrarPaciente ad = (RegistrarPaciente)Com.getController();
-        Scene scene3 = new Scene(root);
-        Stage stage3 = new Stage();
-        stage3.setScene(scene3);
-        stage3.show();*/
-
         App.setRoot("RegistrarPaciente");
-
     }
 
     public void Expediente() throws IOException {
-        App.setRoot("Calendario");
+        App.setRoot("AsignarAgenda");
     }
 
-    public void Next() throws SQLException {
+    public void Next() throws SQLException, FileNotFoundException {
         this.Hoy = this.Hoy.plusDays(1L);
         this.LimpiarT();
-        this.initialize(this.sd2);
+        initialize();
     }
 
-    public void Prev() throws SQLException {
+    public void Prev() throws SQLException, FileNotFoundException {
         this.Hoy = this.Hoy.minusDays(1L);
         this.LimpiarT();
-        this.initialize(this.sd2);
+        initialize();
     }
 
     public void GoExpediente(ActionEvent actionEvent) throws IOException {

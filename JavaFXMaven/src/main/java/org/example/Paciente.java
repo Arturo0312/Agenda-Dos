@@ -6,10 +6,10 @@ public class Paciente {
     private String mail;
     private String tipo;
     private String alg;
-    private int tel;
+    private String tel;
     private String sex;
 
-    public Paciente(String nom, String apll, String mail, String tipo, String alg, int tel, String sex) {
+    public Paciente(String nom, String apll, String mail, String tipo, String alg, String tel, String sex) {
         this.nom = nom;
         this.apll = apll;
         this.mail = mail;
@@ -59,11 +59,11 @@ public class Paciente {
         this.alg = alg;
     }
 
-    public int getTel() {
+    public String getTel() {
         return tel;
     }
 
-    public void setTel(int tel) {
+    public void setTel(String tel) {
         this.tel = tel;
     }
 
